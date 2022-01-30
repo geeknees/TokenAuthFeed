@@ -44,7 +44,6 @@ const Home: NextPage = () => {
             <h4>Network</h4>
             <Network />
           </div>
-
           <div className={styles.card}>
             <h4>Balance</h4>
             {accountData && <Balance address={accountData.address} />}
