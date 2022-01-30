@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useAccount, useConnect } from "wagmi";
 
-import Network from "./components/Network";
+import Network from "../components/Network";
 
 const Home: NextPage = () => {
   const [{ data, error }, connect] = useConnect();
@@ -39,7 +39,15 @@ const Home: NextPage = () => {
         </div>
 
         <div className={styles.grid}>
-          <Network />
+          <div className={styles.card}>
+            <h4>Network</h4>
+            <Network />
+          </div>
+
+          <div className={styles.card}>
+            <h4>Network</h4>
+            <Network />
+          </div>
         </div>
       </main>
 
