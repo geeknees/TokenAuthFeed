@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import { useAccount, useConnect } from "wagmi";
 
 import Network from "../components/Network";
+import Balance from "../components/Balance";
 
 const Home: NextPage = () => {
   const [{ data, error }, connect] = useConnect();
@@ -45,8 +46,8 @@ const Home: NextPage = () => {
           </div>
 
           <div className={styles.card}>
-            <h4>Network</h4>
-            <Network />
+            <h4>Balance</h4>
+            {accountData && <Balance address={accountData.address} />}
           </div>
         </div>
       </main>
