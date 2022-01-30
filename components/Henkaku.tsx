@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import styles from "../styles/Home.module.css";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export type HenkakuProps = {
   address: string;
@@ -15,8 +15,8 @@ const Henkaku: React.FC<HenkakuProps> = (henkaku) => {
 
   const { data, error } = useSWR(ENDPOINT, fetcher);
 
-  if (error) return "An error has occurred.";
-  if (!data) return "Loading...";
+  if (error) return <>An error has occurred.</>;
+  if (!data) return <>Loading...</>;
 
   // console.log(data);
 
