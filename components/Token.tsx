@@ -2,11 +2,11 @@ import { useToken } from "wagmi";
 
 const Token: React.FC<{}> = () => {
   const [{ data, error, loading }, getToken] = useToken({
-    // $UNI ERC-20 token only
-    address: "0x6144d927ee371de7e7f8221b596f3432e7a8e6d9"
+    // $WETH ERC-20 token only
+    address: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
   });
 
-  // console.log(data);
+  // console.log(error);
 
   if (loading) return <div>Fetching token…</div>;
   if (error) return <div>Error fetching token</div>;

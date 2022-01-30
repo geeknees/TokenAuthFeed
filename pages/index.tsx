@@ -6,8 +6,9 @@ import { useAccount, useConnect } from "wagmi";
 
 import Network from "../components/Network";
 import Balance from "../components/Balance";
+import Henkaku from "../components/Henkaku";
 
-const Home: NextPage = () => {
+const Home: NextPage = (props) => {
   const [{ data, error }, connect] = useConnect();
   const [{ data: accountData }, disconnect] = useAccount();
 
@@ -25,7 +26,7 @@ const Home: NextPage = () => {
           {accountData && (
             <div>
               <div>Your account: {accountData.address}</div>
-              <div>Connected to {accountData.connector.name}</div>
+              <div>Connected to {accountData?.connector?.name}</div>
               <button onClick={disconnect}>Disconnect</button>
             </div>
           )}
@@ -39,13 +40,21 @@ const Home: NextPage = () => {
           {error && <div>{error?.message ?? "Failed to connect"}</div>}
         </div>
 
+        <div>
+          <div className={styles.card}>
+            <h4>Balance(Henkaku)</h4>
+            {accountData && <Henkaku address={accountData.address} />}
+          </div>
+        </div>
+
         <div className={styles.grid}>
           <div className={styles.card}>
             <h4>Network</h4>
             <Network />
           </div>
+
           <div className={styles.card}>
-            <h4>Balance</h4>
+            <h4>Balance(Mainnet)</h4>
             {accountData && <Balance address={accountData.address} />}
           </div>
         </div>
